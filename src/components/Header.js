@@ -1,9 +1,9 @@
 
-function Header() {
+function Header(props) {
   return(
     <header>
       <h1>
-        Bookmarks List
+        { props.text }
       </h1>
     </header>
   )

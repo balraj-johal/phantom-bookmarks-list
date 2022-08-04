@@ -8,7 +8,7 @@ import Header from './components/Header';
 function App() {
   return (
     <>
-      <Header />
+      <Header text="Bookmarks" />
       <div className="container" data-testid="App">
         <Router>
           <Routes>
