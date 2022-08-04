@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "ACAA,OAAO,CAAC,+FAAI;ACAZ,AAAA,IAAI,CAAC;EACD,WAAW,EAAE,oBAAoB;CACpC;;AAED,AAAA,MAAM,CAAC;EACH,YAAY,EAAE,KAAK;CACtB",
+    "sources": [
+        "App.scss",
+        "base/_fonts.scss",
+        "_layout.scss"
+    ],
+    "names": [],
+    "file": "App.css"
+}
