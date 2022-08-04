@@ -3,22 +3,20 @@ function BookmarkLink(props) {
 
   return(
     <div>
-      <ShowLink link="testlink" />
+      <ShowLink link={props.link} />
     </div>
   )
 }
 
 function ShowLink(props) {
   return(
-    <>
-      s{ props.link }
-    </>
+    props.link
   )
 }
 
 function EditLink(props) {
   return(
-      <input type="text" />
+    <input type="text" />
   )
 }
 

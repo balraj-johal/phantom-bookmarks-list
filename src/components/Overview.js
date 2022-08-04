@@ -5,7 +5,7 @@ function Overview() {
   return(
     <main data-testid="overview">
       Overview
-      <BookmarkList list={["testLink"]} />
+      <BookmarkList />
       <PageSwitcher />
     </main>
   )
