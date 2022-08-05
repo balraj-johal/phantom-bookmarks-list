@@ -1,45 +1,33 @@
-import { useState } from "react";
-import BookmarkList from "./BookmarkList";
+import { useParams } from "react-router-dom";
+
 import useSavedLinks from "../hooks/useSavedLinks";
+
+import BookmarkList from "./BookmarkList";
 import AddLinkForm from "./AddLinkForm";
 import PageSwitcher from "./PageSwitcher";
 
 const DEFAULT_PAGE_LENGTH = 20;
 
 function Overview() {
-  const [currentPage, setCurrentPage] = useState(0);
+  const routeParams = useParams();
+  
   const { 
     paginatedLinks,
     noPages,
     deleteLink,
     addLink,
-  } = useSavedLinks(currentPage, DEFAULT_PAGE_LENGTH);
-
-  const pageBack = () => {
-    if (currentPage > 0) setCurrentPage(currentPage - 1);
-  }
-  const pageForward = () => {
-    if (currentPage < noPages) setCurrentPage(currentPage + 1);
-  }
+  } = useSavedLinks(routeParams.pageNumber - 1 || 0, DEFAULT_PAGE_LENGTH);
 
   return(
     <main data-testid="overview">
       <AddLinkForm addLink={addLink} />
-      <PageSwitcher 
+      <PageSwitcher
         noPages={noPages}
-        current={currentPage}
-        pageBack={pageBack}
-        pageForward={pageForward}
+        current={routeParams.pageNumber - 1 || 0}
       />
       <BookmarkList 
         list={paginatedLinks}
         deleteLink={deleteLink}
-      />
-      <PageSwitcher 
-        noPages={noPages}
-        current={currentPage}
-        pageBack={pageBack}
-        pageForward={pageForward}
       />
     </main>
   )

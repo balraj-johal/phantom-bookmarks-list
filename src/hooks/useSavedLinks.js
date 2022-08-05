@@ -4,7 +4,7 @@ import { getSavedLinks, updateSavedLinks } from "../api/links";
 const useSavedLinks = (pageNumber, pageLength) => {
   const [allLinks, setAllLinks] = useState([]);
   const [paginatedLinks, setPaginatedLinks] = useState([]);
-  const [noPages, setNoPages] = useState(0);
+  const [noPages, setNoPages] = useState(1);
 
   // get saved links
   useEffect(() => {
@@ -21,7 +21,7 @@ const useSavedLinks = (pageNumber, pageLength) => {
     } else {
       setPaginatedLinks(allLinks.slice(0, pageLength));
     }
-    setNoPages(Math.floor(allLinks.length / pageLength));
+    setNoPages(Math.floor(allLinks.length / pageLength) + 1);
   }, [pageNumber, pageLength, allLinks]);
 
   /** 
