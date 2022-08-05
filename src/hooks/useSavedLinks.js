@@ -40,9 +40,22 @@ const useSavedLinks = (pageNumber, pageLength) => {
   /** 
    * @name updateLink
    * @param {Object} updatedLink - updated link object to save
+   * @param {String} url to change link to
    */
-  const updateLink = (updatedLink) => {
-    // return [...allLinks, updatedLink];
+  const updateLink = (originalLink, updateURL) => {
+    // TODO: validate link here
+    const error = validateURL(updateURL);
+    if (error) {
+      return alert(error);
+    }
+    const updatedLinks = [...allLinks];
+    updatedLinks.forEach(link => {
+      if (link.url === originalLink.url) {
+        link.url = updateURL;
+      }
+    })
+    setAllLinks(updatedLinks);
+    updateSavedLinks(updatedLinks);
   };
 
   /** 

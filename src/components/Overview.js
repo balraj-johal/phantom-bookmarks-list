@@ -15,6 +15,7 @@ function Overview() {
     paginatedLinks,
     noPages,
     deleteLink,
+    updateLink,
     addLink,
   } = useSavedLinks(routeParams.pageNumber - 1 || 0, DEFAULT_PAGE_LENGTH);
 
@@ -28,6 +29,7 @@ function Overview() {
       <BookmarkList 
         list={paginatedLinks}
         deleteLink={deleteLink}
+        updateLink={updateLink}
       />
     </main>
   )

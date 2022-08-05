@@ -8,6 +8,7 @@ function BookmarkList(props) {
         link={link}
         key={link.url}
         deleteLink={props.deleteLink}
+        updateLink={props.updateLink}
       />
     ))
   )
