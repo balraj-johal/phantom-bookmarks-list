@@ -12,8 +12,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="" element={<Overview />} />
           <Route path="page/:pageNumber" element={<Overview />} />
+          <Route path="link-saved/:linkID" element={<Success />} />
         </Route>
-        <Route path="/link-saved/:linkID" element={<Success />} />
       </Routes>
     </BrowserRouter>
   );

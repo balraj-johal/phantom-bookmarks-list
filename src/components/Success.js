@@ -1,8 +1,11 @@
+import { useParams } from "react-router-dom";
 
 function Success() {
+  const routeParams = useParams();
+
   return(
     <main>
-      Success
+      Success for { routeParams.linkID }
     </main>
   )
 }
