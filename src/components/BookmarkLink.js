@@ -46,25 +46,44 @@ function ShowLink(props) {
 function EditLink(props) {
   const initialURL = props.link.url;
   const [url, setURL] = useState(initialURL);
+  const [error, setError] = useState("");
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    // attempt to save link
+    try {
+      const error = await props.updateLink(props.link, url);
+      if (error) return setError(error);
+      props.setLinkState("Show");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return(
-    <>
-      <input value={url} onChange={e => setURL(e.target.value)} />
+    <form onSubmit={onSubmit}>
+      <input 
+        value={url} 
+        onChange={e => setURL(e.target.value)} 
+        required
+      />
+      <span aria-live="assertive">
+        {error}
+      </span>
       <div>
-        <button onClick={() => {
-          alert(`changing ${initialURL} to ${url}`);
-          props.updateLink(props.link, url);
-          // props.deleteLink(props.link);
-        }}>
+        <button type="submit">
           save
         </button>
-        <button onClick={() => {
-          props.setLinkState("Show");
-        }}>
+        <button 
+          onClick={() => {
+            props.setLinkState("Show");
+          }}
+          type="button"
+        >
           cancel
         </button>
       </div>
-    </>
+    </form>
   )
 }
 
