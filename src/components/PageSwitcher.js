@@ -2,7 +2,9 @@
 function PageSwitcher(props) {
 
   return(
-    <>PageSwitcher</>
+    <div className="page-switcher">
+      PageSwitcher
+    </div>
   )
 }
 

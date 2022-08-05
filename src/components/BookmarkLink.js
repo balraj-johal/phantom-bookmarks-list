@@ -2,12 +2,12 @@
 function BookmarkLink(props) {
 
   return(
-    <div>
+    <div className="bookmark-link">
       <ShowLink link={props.link} />
       <button onClick={() => {
         props.deleteLink(props.link);
       }}>
-        delete link test
+        delete
       </button>
     </div>
   )
