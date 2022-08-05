@@ -20,4 +20,18 @@ const updateSavedLinks = (links) => {
   window.localStorage.setItem("bookmarkedLinks", newLinks);
 }
 
-export { getSavedLinks, updateSavedLinks };
+/** 
+ * @name validateURL
+ * @param {String} url 
+ */
+const validateURL = (url) => {
+  let error;
+  if (typeof url !== "string") error = "not string";
+  if (url.length < 1) error = "Please enter a valid URL.";
+  // if link already present
+  // if url unreachable
+  
+  return error;
+}
+
+export { getSavedLinks, updateSavedLinks, validateURL };

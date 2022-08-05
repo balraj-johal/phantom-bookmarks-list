@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getSavedLinks, updateSavedLinks } from "../api/links";
+import { getSavedLinks, updateSavedLinks, validateURL } from "../api/links";
 
 const useSavedLinks = (pageNumber, pageLength) => {
   const [allLinks, setAllLinks] = useState([]);
@@ -33,7 +33,7 @@ const useSavedLinks = (pageNumber, pageLength) => {
     let requestedLink;
     allLinks.forEach(link => {
       if (link.url === url) requestedLink = link;
-    })
+    });
     return requestedLink;
   };
 
@@ -51,6 +51,10 @@ const useSavedLinks = (pageNumber, pageLength) => {
    */
   const addLink = (link) => {
     // TODO: validate link here
+    const error = validateURL(link);
+    if (error) {
+      return alert(error);
+    }
     const updatedLinks = [...allLinks, link];
     setAllLinks(updatedLinks);
     updateSavedLinks(updatedLinks);
