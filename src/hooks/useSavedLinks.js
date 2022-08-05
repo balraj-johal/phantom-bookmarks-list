@@ -26,14 +26,14 @@ const useSavedLinks = (pageNumber, pageLength = DEFAULT_PAGE_LENGTH) => {
   }, [pageNumber, pageLength, allLinks]);
 
   /** 
-   * @name getLinkByID
-   * @param {String} id - unique link id
+   * @name getLinkByURL
+   * @param {String} url - unique link url
    * @returns {Object} link
    */
-  const getLinkByID = (id) => {
+  const getLinkByURL = (url) => {
     let requestedLink;
     allLinks.forEach(link => {
-      if (link.id === id) requestedLink = link;
+      if (link.url === url) requestedLink = link;
     })
     return requestedLink;
   };
@@ -59,22 +59,23 @@ const useSavedLinks = (pageNumber, pageLength = DEFAULT_PAGE_LENGTH) => {
   };
 
   /** 
-   * @name addLink
+   * @name deleteLink
    * @param {Object} linkToDelete
    */
   const deleteLink = (linkToDelete) => {
     let deletionIndex;
-    allLinks.forEach((link, index) => {
-      if (link.id === linkToDelete.id) deletionIndex = index;
+    let updatedLinks = [...allLinks];
+    updatedLinks.forEach((link, index) => {
+      if (link.url === linkToDelete.url) deletionIndex = index;
     })
-    const updatedLinks = allLinks.slice(deletionIndex, 1);
+    updatedLinks.splice(deletionIndex, 1);
     setAllLinks(updatedLinks);
     updateSavedLinks(updatedLinks);
   };
 
   return { 
     paginatedLinks,
-    getLinkByID, 
+    getLinkByURL, 
     updateLink, 
     addLink, 
     deleteLink 
