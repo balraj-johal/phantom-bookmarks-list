@@ -1,6 +1,7 @@
 
 function PageSwitcher(props) {
 
+  if (props.noPages < 1) return null;
   return(
     <div className="page-switcher">
       <button onClick={props.pageBack}>
@@ -11,7 +12,7 @@ function PageSwitcher(props) {
         forwards
       </button>
     </div>
-  )
+  );
 }
 
 export default PageSwitcher;
