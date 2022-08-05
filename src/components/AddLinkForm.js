@@ -15,6 +15,7 @@ function AddLinkForm(props) {
     <form className="bookmark-link add-link" onSubmit={onSubmit}>
       <input 
         type="text" 
+        value={url}
         onChange={e => setURL(e.target.value)} 
       />
       <button type="submit">
