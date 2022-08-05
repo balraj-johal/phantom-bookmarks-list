@@ -64,7 +64,7 @@ const useSavedLinks = (pageNumber, pageLength) => {
    */
   const addLink = (link) => {
     // TODO: validate link here
-    const error = validateURL(link);
+    const error = validateURL(link.url);
     if (error) {
       return alert(error);
     }
