@@ -5,10 +5,17 @@ function AddLinkForm(props) {
   const navigate = useNavigate();
   const [url, setURL] = useState("");
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    props.addLink({url});
-    navigate(`/link-saved/${url}`);
+    // attempt to save link
+    try {
+      const error = await props.addLink({url});
+      if (error) return console.log(error);
+      // redirect to success page if link saved
+      navigate(`/link-saved/${encodeURIComponent(url)}`);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return(

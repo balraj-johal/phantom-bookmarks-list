@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getSavedLinks, updateSavedLinks, validateURL } from "../api/links";
+import { getSavedLinks, updateSavedLinks, getURLValidationError } from "../api/links";
 
 const useSavedLinks = (pageNumber, pageLength) => {
   const [allLinks, setAllLinks] = useState([]);
@@ -42,36 +42,38 @@ const useSavedLinks = (pageNumber, pageLength) => {
    * @param {Object} updatedLink - updated link object to save
    * @param {String} url to change link to
    */
-  const updateLink = (originalLink, updateURL) => {
-    // TODO: validate link here
-    const error = validateURL(updateURL);
-    if (error) {
-      return alert(error);
+  const updateLink = async (originalLink, updateURL) => {
+    try {
+      await getURLValidationError(updateURL);
+      const updatedLinks = [...allLinks];
+      updatedLinks.forEach(link => {
+        if (link.url === originalLink.url) {
+          link.url = updateURL;
+        }
+      })
+      setAllLinks(updatedLinks);
+      updateSavedLinks(updatedLinks);
+      return;
+    } catch (error) {
+      return error;
     }
-    const updatedLinks = [...allLinks];
-    updatedLinks.forEach(link => {
-      if (link.url === originalLink.url) {
-        link.url = updateURL;
-      }
-    })
-    setAllLinks(updatedLinks);
-    updateSavedLinks(updatedLinks);
   };
 
   /** 
    * @name addLink
    * @param {Object} link - link to save
+   * @returns validation error
    */
-  const addLink = (link) => {
-    // TODO: validate link here
-    const error = validateURL(link.url);
-    if (error) {
-      return alert(error);
+  const addLink = async (link) => {
+    try {
+      await getURLValidationError(link.url);
+      const updatedLinks = [...allLinks, link];
+      setAllLinks(updatedLinks);
+      updateSavedLinks(updatedLinks);
+      return;
+    } catch (error) {
+      return error;
     }
-    const updatedLinks = [...allLinks, link];
-    setAllLinks(updatedLinks);
-    updateSavedLinks(updatedLinks);
-    return updatedLinks;
   };
 
   /** 

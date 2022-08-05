@@ -5,7 +5,8 @@ function Success() {
 
   return(
     <main>
-      Success for { routeParams.linkID }
+      Success for { decodeURIComponent(routeParams.linkID) }
+      <a href="/">&lt; back to overview</a>
     </main>
   )
 }
