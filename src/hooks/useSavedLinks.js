@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { getSavedLinks, updateSavedLinks } from "../api/links";
 
-const DEFAULT_PAGE_LENGTH = 20;
-
-const useSavedLinks = (pageNumber, pageLength = DEFAULT_PAGE_LENGTH) => {
+const useSavedLinks = (pageNumber, pageLength) => {
   const [allLinks, setAllLinks] = useState([]);
   const [paginatedLinks, setPaginatedLinks] = useState([]);
   const [noPages, setNoPages] = useState(0);
@@ -16,8 +14,9 @@ const useSavedLinks = (pageNumber, pageLength = DEFAULT_PAGE_LENGTH) => {
   // update paginated links
   useEffect(() => {
     if (pageNumber) {
+      const startIndex = pageLength * pageNumber;
       setPaginatedLinks(
-        allLinks.slice(pageLength * pageNumber, pageLength)
+        allLinks.slice(startIndex, startIndex + pageLength)
       );
     } else {
       setPaginatedLinks(allLinks.slice(0, pageLength));

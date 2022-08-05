@@ -4,6 +4,8 @@ import AddLinkForm from "./AddLinkForm";
 import BookmarkLink from "./BookmarkLink";
 import PageSwitcher from "./PageSwitcher";
 
+const DEFAULT_PAGE_LENGTH = 20;
+
 function BookmarkList(props) {
   const [currentPage, setCurrentPage] = useState(0);
   const { 
@@ -11,23 +13,37 @@ function BookmarkList(props) {
     deleteLink,
     addLink,
     noPages
-  } = useSavedLinks(currentPage);
+  } = useSavedLinks(currentPage, DEFAULT_PAGE_LENGTH);
+
+  const pageBack = () => {
+    if (currentPage > 0) setCurrentPage(currentPage - 1);
+  }
+  const pageForward = () => {
+    if (currentPage < noPages) setCurrentPage(currentPage + 1);
+  }
 
   return(
     <>
       <AddLinkForm addLink={addLink} />
+      { noPages > 0 && <PageSwitcher 
+        noPages={noPages}
+        current={currentPage}
+        pageBack={pageBack}
+        pageForward={pageForward}
+      /> }
       {paginatedLinks.map((link) => (
         <BookmarkLink
           link={link}
-          key={link.id}
+          key={link.url}
           deleteLink={deleteLink}
         />
       ))}
-      <PageSwitcher 
+      { noPages > 0 && <PageSwitcher 
         noPages={noPages}
-        current={0}
-        setCurrentPage={setCurrentPage}
-      />
+        current={currentPage}
+        pageBack={pageBack}
+        pageForward={pageForward}
+      /> }
     </>
   )
 }
