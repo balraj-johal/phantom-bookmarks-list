@@ -6,6 +6,7 @@ const DEFAULT_PAGE_LENGTH = 20;
 const useSavedLinks = (pageNumber, pageLength = DEFAULT_PAGE_LENGTH) => {
   const [allLinks, setAllLinks] = useState([]);
   const [paginatedLinks, setPaginatedLinks] = useState([]);
+  const [noPages, setNoPages] = useState(0);
 
   // get saved links
   useEffect(() => {
@@ -19,10 +20,9 @@ const useSavedLinks = (pageNumber, pageLength = DEFAULT_PAGE_LENGTH) => {
         allLinks.slice(pageLength * pageNumber, pageLength)
       );
     } else {
-      setPaginatedLinks(
-        allLinks.slice(0, pageLength)
-      );
+      setPaginatedLinks(allLinks.slice(0, pageLength));
     }
+    setNoPages(Math.floor(allLinks.length / pageLength));
   }, [pageNumber, pageLength, allLinks]);
 
   /** 
@@ -75,6 +75,7 @@ const useSavedLinks = (pageNumber, pageLength = DEFAULT_PAGE_LENGTH) => {
 
   return { 
     paginatedLinks,
+    noPages,
     getLinkByURL, 
     updateLink, 
     addLink, 
