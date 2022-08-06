@@ -20,12 +20,16 @@ function AddLinkForm(props) {
   }
 
   return(
-    <form className="bookmark-link add-link" onSubmit={onSubmit}>
+    <form 
+      id="add-link-form" 
+      className="bookmark-link add-link" 
+      onSubmit={onSubmit}
+    >
       <div>
-        <input 
-          type="text" 
+        <input
+          type="text"
           value={url}
-          onChange={e => setURL(e.target.value)} 
+          onChange={e => setURL(e.target.value)}
           required
         />
         <span aria-live="assertive">

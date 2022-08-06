@@ -28,15 +28,21 @@ function ShowLink(props) {
     <>
       <a href={props.link.url}>{props.link.url}</a>
       <div>
-        {props.deleteLink && <button onClick={() => {
-          props.deleteLink(props.link);
-        }}>
+        {props.deleteLink && <button 
+          onClick={() => {
+            props.deleteLink(props.link);
+          }}
+          className="delete"
+        >
           delete
         </button>}
         {/* deletelink or updateLink? */}
-        {props.deleteLink && <button onClick={() => {
-          props.setLinkState("Edit");
-        }}>
+        {props.deleteLink && <button 
+          onClick={() => {
+            props.setLinkState("Edit");
+          }}
+          className="edit"
+        >
           edit
         </button>}
       </div>
@@ -64,6 +70,7 @@ function EditLink(props) {
   return(
     <form onSubmit={onSubmit}>
       <input 
+        className="edit"
         value={url} 
         onChange={e => setURL(e.target.value)} 
         required
@@ -72,7 +79,7 @@ function EditLink(props) {
         {error}
       </span>
       <div>
-        <button type="submit">
+        <button type="submit" className="save">
           save
         </button>
         <button 
