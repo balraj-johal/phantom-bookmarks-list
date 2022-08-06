@@ -55,13 +55,18 @@ const getURLValidationError = url => new Promise((resolve, reject) => {
   if (typeof url !== "string") return "String entry required.";
   if (url.length < 1) return "Please enter a valid link.";
   // if link already present
-  const links = JSON.parse(window.localStorage.getItem("bookmarkedLinks"));
+  let links = JSON.parse(window.localStorage.getItem("bookmarkedLinks"));
+  if (!links) {
+    window.localStorage.setItem("bookmarkedLinks", JSON.stringify([]));
+    links = [];
+  }
   let linkPresent = false;
   links.forEach(link => {
     if (link.url === url) linkPresent = true;
   })
   if (linkPresent) reject("This link is already present.");
   // is link valid format
+  if (!url.includes("http")) url = `https://${url}`;
   try {
     new URL(url);
   } catch (error) {
