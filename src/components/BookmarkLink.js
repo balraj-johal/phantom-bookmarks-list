@@ -26,7 +26,7 @@ function BookmarkLink(props) {
 function ShowLink(props) {
   return(
     <>
-      {props.link.url}
+      <a href={props.link.url}>{props.link.url}</a>
       <div>
         {props.deleteLink && <button onClick={() => {
           props.deleteLink(props.link);
