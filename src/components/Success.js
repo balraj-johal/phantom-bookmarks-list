@@ -1,11 +1,15 @@
 import { useParams } from "react-router-dom";
+import BookmarkLink from "./BookmarkLink";
 
 function Success() {
   const routeParams = useParams();
 
   return(
     <main>
-      Success for { decodeURIComponent(routeParams.linkID) }
+      Success!
+      <BookmarkLink
+        link={{ url: decodeURIComponent(routeParams.linkID) }}
+      />
       <a href="/">&lt; back to overview</a>
     </main>
   )

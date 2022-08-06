@@ -28,16 +28,17 @@ function ShowLink(props) {
     <>
       {props.link.url}
       <div>
-        <button onClick={() => {
+        {props.deleteLink && <button onClick={() => {
           props.deleteLink(props.link);
         }}>
           delete
-        </button>
-        <button onClick={() => {
+        </button>}
+        {/* deletelink or updateLink? */}
+        {props.deleteLink && <button onClick={() => {
           props.setLinkState("Edit");
         }}>
           edit
-        </button>
+        </button>}
       </div>
     </>
   )
