@@ -1,16 +1,21 @@
 
 import BookmarkLink from "./BookmarkLink";
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
-function BookmarkList(props) {
+function BookmarkList(props) {  
+  const [animationParent] = useAutoAnimate();
+
   return(
-    props.list.map((link) => (
-      <BookmarkLink
-        link={link}
-        key={link.url}
-        deleteLink={props.deleteLink}
-        updateLink={props.updateLink}
-      />
-    ))
+    <ul ref={animationParent}>
+      { props.list.map((link) => (
+        <BookmarkLink
+          link={link}
+          key={link.url}
+          deleteLink={props.deleteLink}
+          updateLink={props.updateLink}
+        />
+      )) }
+    </ul>
   )
 }
 

@@ -1,97 +1,76 @@
 import { useState } from "react";
 
+import editImg from "../resources/icons/edit.png";
+import deleteImg from "../resources/icons/delete.png";
+
+import LinkForm from "./LinkForm";
+
 function BookmarkLink(props) {
   const [linkState, setLinkState] = useState("Show");
-
-  if (linkState === "Show") return(
-    <div className="bookmark-link">
-      <ShowLink 
-        link={props.link}
-        deleteLink={props.deleteLink}
-        setLinkState={setLinkState}
-      />
-    </div>
-  )
-  return(
-    <div className="bookmark-link">
-      <EditLink 
-        link={props.link}
-        updateLink={props.updateLink}
-        setLinkState={setLinkState}
-      />
-    </div>
-  )
-}
-
-function ShowLink(props) {
-  return(
-    <>
-      <a href={props.link.url}>{props.link.url}</a>
-      <div>
-        {props.deleteLink && <button 
-          onClick={() => {
-            props.deleteLink(props.link);
-          }}
-          className="delete"
-        >
-          delete
-        </button>}
-        {/* deletelink or updateLink? */}
-        {props.deleteLink && <button 
-          onClick={() => {
-            props.setLinkState("Edit");
-          }}
-          className="edit"
-        >
-          edit
-        </button>}
-      </div>
-    </>
-  )
-}
-
-function EditLink(props) {
-  const initialURL = props.link.url;
-  const [url, setURL] = useState(initialURL);
   const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-  const onSubmit = async (e) => {
+  const submitEditLinkForm = async (e, url) => {
     e.preventDefault();
+    setSubmitting(true);
+    setError("");
+    if (!url.includes("http")) url = `https://${url}`;
     // attempt to save link
     try {
       const error = await props.updateLink(props.link, url);
-      if (error) return setError(error);
-      props.setLinkState("Show");
+      if (error) {
+        setSubmitting(false);
+        return setError(error);
+      }
+      setSubmitting(false);
+      
     } catch (error) {
       console.log(error);
     }
   }
 
+  if (linkState === "Show") return(
+    <LinkDisplay 
+      link={props.link}
+      deleteLink={props.deleteLink}
+      setLinkState={setLinkState}
+    />
+  )
   return(
-    <form onSubmit={onSubmit}>
-      <input 
-        className="edit"
-        value={url} 
-        onChange={e => setURL(e.target.value)} 
-        required
-      />
-      <span aria-live="assertive">
-        {error}
-      </span>
-      <div>
-        <button type="submit" className="save">
-          save
-        </button>
-        <button 
-          onClick={() => {
-            props.setLinkState("Show");
-          }}
-          type="button"
-        >
-          cancel
-        </button>
+    <LinkForm
+      toEdit={props.link}
+      onSubmit={submitEditLinkForm} 
+      error={error} 
+      submitting={submitting} 
+      cancellable
+      cancel={() => { setLinkState("Show"); }}
+    />
+  )
+}
+
+function LinkDisplay(props) {
+  return(
+    <li className="bookmark-link">
+      <a href={props.link.url}>
+        {props.link.url}
+       </a>
+      <div className="buttons">
+        { props.deleteLink && 
+          <button 
+            onClick={() => { props.deleteLink(props.link); }}
+            className="delete"
+          >
+            <img src={deleteImg} alt="delete icon" />
+          </button> }
+        { props.deleteLink && 
+          <button 
+            onClick={() => { props.setLinkState("Edit"); }}
+            className="edit"
+          >
+            <img src={editImg} alt="edit icon" />
+          </button> }
       </div>
-    </form>
+    </li>
   )
 }
 

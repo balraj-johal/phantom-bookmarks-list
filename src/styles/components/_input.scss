@@ -1,0 +1,14 @@
+input {
+  border: 0;
+  border-radius: 1.5px;
+  font-family: "Lekton", sans-serif;
+  padding: 2px 5px;
+
+  min-width: 210px;
+}
+
+@media (min-width: 900px) {
+  input {
+    min-width: 50%;
+  }
+}

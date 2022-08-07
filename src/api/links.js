@@ -66,7 +66,6 @@ const getURLValidationError = url => new Promise((resolve, reject) => {
   })
   if (linkPresent) reject("This link is already present.");
   // is link valid format
-  if (!url.includes("http")) url = `https://${url}`;
   try {
     new URL(url);
   } catch (error) {

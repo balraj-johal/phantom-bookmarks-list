@@ -1,0 +1,43 @@
+#link-form {
+  position: relative;
+
+  input.error {
+    outline: 1.5px solid red;
+  }
+  .url-section {
+    span.error {
+      font-size: 0.9em;
+      color: red;
+      line-height: 1em;
+      margin-top: 10px;
+      margin-bottom: -4px;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  button.cancel {
+    &:hover {
+      transition: all 150ms;
+      background-color: rgb(146, 28, 28);
+      color: white;
+    }
+  }
+  button.save {
+    padding: 0 30px;
+    &:hover {
+      transition: all 150ms;
+      background-color: #00a2ff;
+      color: white;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  #link-form {
+    .url-section {
+      width: 50%;
+    }
+  }
+}

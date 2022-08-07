@@ -1,18 +1,40 @@
 body {
     font-family: "Lekton", sans-serif;
-}
-
-header {
-    padding-left: 1.5em;
+    background-color: black;
+    color: white;
 }
 
 .container {
     width: 100%;
+    margin-bottom: 5em;
+}
+
+h1 {
+    font-size: 1.5em;
+    padding: 0 15px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media (min-width: 900px) {
+    h1 {
+        font-size: 2em;
+        padding: 0 15px;
+    }
+    header {
+        padding-left: 1.5em;
+    }
     .container {
         width: 70%;
         margin: auto;
+        margin-bottom: 5em;
     }
 }

@@ -1,17 +1,26 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LinkForm from "./LinkForm";
 
 function AddLinkForm(props) {
   const navigate = useNavigate();
-  const [url, setURL] = useState("");
-  const [error, setError] = useState("");
 
-  const onSubmit = async (e) => {
+  const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
+  const submitAddLinkForm = async (e, url) => {
     e.preventDefault();
+    setError("");
+    setSubmitting(true);
+    if (!url.includes("http")) url = `https://${url}`;
     // attempt to save link
     try {
       const error = await props.addLink({url});
-      if (error) return setError(error);
+      if (error) {
+        setSubmitting(false);
+        return setError(error);
+      }
+      setSubmitting(false);
       // redirect to success page if link saved
       navigate(`/link-saved/${encodeURIComponent(url)}`);
     } catch (error) {
@@ -20,26 +29,11 @@ function AddLinkForm(props) {
   }
 
   return(
-    <form 
-      id="add-link-form" 
-      className="bookmark-link add-link" 
-      onSubmit={onSubmit}
-    >
-      <div>
-        <input
-          type="text"
-          value={url}
-          onChange={e => setURL(e.target.value)}
-          required
-        />
-        <span aria-live="assertive">
-          {error}
-        </span>
-      </div>
-      <button type="submit">
-        Save Link
-      </button>
-    </form>
+    <LinkForm 
+      onSubmit={submitAddLinkForm} 
+      error={error} 
+      submitting={submitting} 
+    />
   )
 }
 
