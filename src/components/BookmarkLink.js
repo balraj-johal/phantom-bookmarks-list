@@ -44,7 +44,7 @@ function BookmarkLink(props) {
 
 function LinkDisplay(props) {
   return(
-    <div>
+    <div className="bookmark-link">
       <a href={props.link.url}>{props.link.url}</a>
       <div className="buttons">
         {props.deleteLink && <button 
