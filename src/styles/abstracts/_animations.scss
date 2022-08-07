@@ -1,0 +1,20 @@
+@keyframes errorShake {
+  0% { transform: 'translateX(0px)' }
+  17% { transform: 'translateX(-3.25px)' }
+  34% { transform: 'translateX(3.25px)' }
+  50% { transform: 'translateX(-3.25px)' }
+  66% { transform: 'translateX(3.25px)' }
+  84% { transform: 'translateX(-2px)' }
+  100% { transform: 'translateX(0px)' }
+}
+
+@media (prefers-reduced-motion) {
+  input.error {
+      animation: none !important;
+  }
+}
+
+input.error { 
+  transform: translateX(0px);
+  animation: errorShake 600ms;
+}

@@ -27,13 +27,12 @@ function AddLinkForm(props) {
     >
       <div className="url-section">
         <input
-          className="url-element"
+          className={`url-element ${error ? "error" : ""}`}
           type="text"
           value={url}
           onChange={e => setURL(e.target.value)}
           required
           placeholder="enter a valid url here"
-          error={error}
         />
         { error !== "" && <span
           className="url-element error" 

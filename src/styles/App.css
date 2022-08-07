@@ -1,4 +1,79 @@
 @import url("https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap");
+@-webkit-keyframes errorShake {
+  0% {
+    -webkit-transform: 'translateX(0px)';
+            transform: 'translateX(0px)';
+  }
+  17% {
+    -webkit-transform: 'translateX(-3.25px)';
+            transform: 'translateX(-3.25px)';
+  }
+  34% {
+    -webkit-transform: 'translateX(3.25px)';
+            transform: 'translateX(3.25px)';
+  }
+  50% {
+    -webkit-transform: 'translateX(-3.25px)';
+            transform: 'translateX(-3.25px)';
+  }
+  66% {
+    -webkit-transform: 'translateX(3.25px)';
+            transform: 'translateX(3.25px)';
+  }
+  84% {
+    -webkit-transform: 'translateX(-2px)';
+            transform: 'translateX(-2px)';
+  }
+  100% {
+    -webkit-transform: 'translateX(0px)';
+            transform: 'translateX(0px)';
+  }
+}
+@keyframes errorShake {
+  0% {
+    -webkit-transform: 'translateX(0px)';
+            transform: 'translateX(0px)';
+  }
+  17% {
+    -webkit-transform: 'translateX(-3.25px)';
+            transform: 'translateX(-3.25px)';
+  }
+  34% {
+    -webkit-transform: 'translateX(3.25px)';
+            transform: 'translateX(3.25px)';
+  }
+  50% {
+    -webkit-transform: 'translateX(-3.25px)';
+            transform: 'translateX(-3.25px)';
+  }
+  66% {
+    -webkit-transform: 'translateX(3.25px)';
+            transform: 'translateX(3.25px)';
+  }
+  84% {
+    -webkit-transform: 'translateX(-2px)';
+            transform: 'translateX(-2px)';
+  }
+  100% {
+    -webkit-transform: 'translateX(0px)';
+            transform: 'translateX(0px)';
+  }
+}
+
+@media (prefers-reduced-motion) {
+  input.error {
+    -webkit-animation: none !important;
+            animation: none !important;
+  }
+}
+
+input.error {
+  -webkit-transform: translateX(0px);
+          transform: translateX(0px);
+  -webkit-animation: errorShake 600ms;
+          animation: errorShake 600ms;
+}
+
 .bookmark-link {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -70,6 +145,10 @@
   position: relative;
 }
 
+#add-link-form input.error {
+  outline: 1.5px solid red;
+}
+
 #add-link-form .url-section {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -83,7 +162,7 @@
           justify-content: center;
 }
 
-#add-link-form .url-section .error {
+#add-link-form .url-section span.error {
   font-size: 0.9em;
   color: red;
   line-height: 1em;

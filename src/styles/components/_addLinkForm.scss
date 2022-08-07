@@ -1,7 +1,11 @@
 #add-link-form {
   position: relative;
+
+  input.error {
+    outline: 1.5px solid red;
+  }
   .url-section {
-    .error {
+    span.error {
       font-size: 0.9em;
       color: red;
       line-height: 1em;
