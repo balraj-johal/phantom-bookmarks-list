@@ -44,7 +44,7 @@ function BookmarkLink(props) {
 
 function LinkDisplay(props) {
   return(
-    <div className="bookmark-link">
+    <li className="bookmark-link">
       <a href={props.link.url}>{props.link.url}</a>
       <div className="buttons">
         {props.deleteLink && <button 
@@ -64,7 +64,7 @@ function LinkDisplay(props) {
           edit
         </button>}
       </div>
-    </div>
+    </li>
   )
 }
 

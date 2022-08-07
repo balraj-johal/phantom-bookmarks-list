@@ -9,7 +9,6 @@
   padding: 0.5em;
   
   background-color: rgb(54, 54, 54);
-  // box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.2),0 2px 4px -2px rgba(255, 255, 255, 0.2);
   border-radius: 5px;
 
   &.add-link {
@@ -17,8 +16,14 @@
   }
   
   a {
-    max-width: 216px;
-    overflow-wrap: break-word;
+    max-width: 184px;
+    height: 3.1em;
+    // insert ellipisis on overflow past 3 lines
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    overflow-wrap: anywhere;
   }
 
   .buttons {
@@ -30,10 +35,9 @@
 
 @media (min-width: 900px) {
   .bookmark-link {
-    width: 100%;
+    width: 98%;
   }
   a {
     max-width: 80% !important;
-    overflow-wrap: break-word;
   }
 }
