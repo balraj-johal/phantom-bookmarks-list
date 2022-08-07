@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
 import Overview from './components/Overview';
 import Success from './components/Success';
 import Header from './components/Header';
+import BackgroundCanvas from './components/BackgroundCanvas';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
 function Layout(props) {
   return(
     <>
+    <BackgroundCanvas />
       <Header text="Bookmarks" />
       <div className="container" data-testid="App">
         <Outlet />
