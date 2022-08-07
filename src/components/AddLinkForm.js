@@ -10,7 +10,9 @@ function AddLinkForm(props) {
 
   const submitAddLinkForm = async (e, url) => {
     e.preventDefault();
+    setError("");
     setSubmitting(true);
+    if (!url.includes("http")) url = `https://${url}`;
     // attempt to save link
     try {
       const error = await props.addLink({url});

@@ -9,6 +9,8 @@ function BookmarkLink(props) {
   const submitEditLinkForm = async (e, url) => {
     e.preventDefault();
     setSubmitting(true);
+    setError("");
+    if (!url.includes("http")) url = `https://${url}`;
     // attempt to save link
     try {
       const error = await props.updateLink(props.link, url);
