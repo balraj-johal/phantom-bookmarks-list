@@ -1,7 +1,27 @@
 import { useState } from "react";
+import LinkForm from "./LinkForm";
 
 function BookmarkLink(props) {
   const [linkState, setLinkState] = useState("Show");
+  const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
+  const submitEditLinkForm = async (e, url) => {
+    e.preventDefault();
+    setSubmitting(true);
+    // attempt to save link
+    try {
+      const error = await props.updateLink(props.link, url);
+      if (error) {
+        setSubmitting(false);
+        return setError(error);
+      }
+      setSubmitting(false);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   if (linkState === "Show") return(
     <div className="bookmark-link">
@@ -13,13 +33,21 @@ function BookmarkLink(props) {
     </div>
   )
   return(
-    <div className="bookmark-link">
-      <EditLink 
-        link={props.link}
-        updateLink={props.updateLink}
-        setLinkState={setLinkState}
-      />
-    </div>
+    <LinkForm
+      toEdit={props.link}
+      onSubmit={submitEditLinkForm} 
+      error={error} 
+      submitting={submitting} 
+      cancellable
+      cancel={() => { props.setLinkState("Show") }}
+    />
+    // <div className="bookmark-link">
+    //   <EditLink 
+    //     link={props.link}
+    //     updateLink={props.updateLink}
+    //     setLinkState={setLinkState}
+    //   />
+    // </div>
   )
 }
 
@@ -50,49 +78,38 @@ function ShowLink(props) {
   )
 }
 
-function EditLink(props) {
-  const initialURL = props.link.url;
-  const [url, setURL] = useState(initialURL);
-  const [error, setError] = useState("");
+// function EditLink(props) {
+//   const initialURL = props.link.url;
+//   const [url, setURL] = useState(initialURL);
+//   const [error, setError] = useState("");
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    // attempt to save link
-    try {
-      const error = await props.updateLink(props.link, url);
-      if (error) return setError(error);
-      props.setLinkState("Show");
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
-  return(
-    <form onSubmit={onSubmit}>
-      <input 
-        className="edit"
-        value={url} 
-        onChange={e => setURL(e.target.value)} 
-        required
-      />
-      <span aria-live="assertive">
-        {error}
-      </span>
-      <div>
-        <button type="submit" className="save">
-          save
-        </button>
-        <button 
-          onClick={() => {
-            props.setLinkState("Show");
-          }}
-          type="button"
-        >
-          cancel
-        </button>
-      </div>
-    </form>
-  )
-}
+//   return(
+//     <form onSubmit={onSubmit}>
+//       <input 
+//         className="edit"
+//         value={url} 
+//         onChange={e => setURL(e.target.value)} 
+//         required
+//       />
+//       <span aria-live="assertive">
+//         {error}
+//       </span>
+//       <div>
+//         <button type="submit" className="save">
+//           save
+//         </button>
+//         <button 
+//           onClick={() => {
+//             props.setLinkState("Show");
+//           }}
+//           type="button"
+//         >
+//           cancel
+//         </button>
+//       </div>
+//     </form>
+//   )
+// }
 
 export default BookmarkLink;
