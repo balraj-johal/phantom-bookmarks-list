@@ -37,7 +37,7 @@ function BookmarkLink(props) {
       error={error} 
       submitting={submitting} 
       cancellable
-      cancel={() => { props.setLinkState("Show") }}
+      cancel={() => { setLinkState("Show"); }}
     />
   )
 }
@@ -45,24 +45,26 @@ function BookmarkLink(props) {
 function LinkDisplay(props) {
   return(
     <li className="bookmark-link">
-      <a href={props.link.url}>{props.link.url}</a>
+      <a href={props.link.url}>
+        {props.link.url}
+       </a>
       <div className="buttons">
-        {props.deleteLink && <button 
-          onClick={() => {
-            props.deleteLink(props.link);
-          }}
-          className="delete"
-        >
-          delete
-        </button>}
-        {props.deleteLink && <button 
-          onClick={() => {
-            props.setLinkState("Edit");
-          }}
-          className="edit"
-        >
-          edit
-        </button>}
+        { props.deleteLink && 
+          <button 
+            onClick={() => {
+              props.deleteLink(props.link);
+            }}
+            className="delete"
+          >
+            delete
+          </button> }
+        { props.deleteLink && 
+          <button 
+            onClick={() => { props.setLinkState("Edit"); }}
+            className="edit"
+          >
+            edit
+          </button> }
       </div>
     </li>
   )
