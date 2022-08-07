@@ -24,13 +24,11 @@ function BookmarkLink(props) {
   }
 
   if (linkState === "Show") return(
-    <div className="bookmark-link">
-      <ShowLink 
-        link={props.link}
-        deleteLink={props.deleteLink}
-        setLinkState={setLinkState}
-      />
-    </div>
+    <LinkDisplay 
+      link={props.link}
+      deleteLink={props.deleteLink}
+      setLinkState={setLinkState}
+    />
   )
   return(
     <LinkForm
@@ -41,19 +39,12 @@ function BookmarkLink(props) {
       cancellable
       cancel={() => { props.setLinkState("Show") }}
     />
-    // <div className="bookmark-link">
-    //   <EditLink 
-    //     link={props.link}
-    //     updateLink={props.updateLink}
-    //     setLinkState={setLinkState}
-    //   />
-    // </div>
   )
 }
 
-function ShowLink(props) {
+function LinkDisplay(props) {
   return(
-    <>
+    <div>
       <a href={props.link.url}>{props.link.url}</a>
       <div className="buttons">
         {props.deleteLink && <button 
@@ -64,7 +55,6 @@ function ShowLink(props) {
         >
           delete
         </button>}
-        {/* deletelink or updateLink? */}
         {props.deleteLink && <button 
           onClick={() => {
             props.setLinkState("Edit");
@@ -74,42 +64,8 @@ function ShowLink(props) {
           edit
         </button>}
       </div>
-    </>
+    </div>
   )
 }
-
-// function EditLink(props) {
-//   const initialURL = props.link.url;
-//   const [url, setURL] = useState(initialURL);
-//   const [error, setError] = useState("");
-
-
-//   return(
-//     <form onSubmit={onSubmit}>
-//       <input 
-//         className="edit"
-//         value={url} 
-//         onChange={e => setURL(e.target.value)} 
-//         required
-//       />
-//       <span aria-live="assertive">
-//         {error}
-//       </span>
-//       <div>
-//         <button type="submit" className="save">
-//           save
-//         </button>
-//         <button 
-//           onClick={() => {
-//             props.setLinkState("Show");
-//           }}
-//           type="button"
-//         >
-//           cancel
-//         </button>
-//       </div>
-//     </form>
-//   )
-// }
 
 export default BookmarkLink;
