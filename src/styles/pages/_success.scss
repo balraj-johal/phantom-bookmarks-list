@@ -4,21 +4,35 @@
   align-items: center;
 
   .success-anim {
-    margin: 3em 0 4em;
-    width: 50vw;
-    height: 50vw;
+    margin: 5em 0 6em;
+    width: 30vw;
+    height: 30vw;
   }
 
   h1 {
     text-align: center;
+  }
+
+  .return-link-wrapper {
+    width: 100%;
+    margin-top: 1em;
+    font-weight: bold;
+    .return-link {
+      padding: 15px 15px 15px 0;
+      width: 89%;
+    }
   }
 }
 
 @media (min-width: 900px) {
   .success {
     .success-anim {
-      width: 30vw;
-      height: 30vw;
+      width: 20vw;
+      height: 20vw;
+    }
+    .return-link {
+      position: relative;
+      left: 0;
     }
   }
 }

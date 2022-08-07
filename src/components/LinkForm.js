@@ -27,16 +27,18 @@ function LinkForm(props) {
         </span> }
         
       </div>
-      <button type="submit" disabled={props.submitting}>
-        Save Link
-      </button>
-      { props.cancellable && 
-        <button 
-          onClick={props.cancel}
-          type="button"
-        >
-          Cancel
-        </button>}
+      <div className="buttons">
+        <button type="submit" disabled={props.submitting}>
+          Save Link
+        </button>
+        { props.cancellable && 
+          <button 
+            onClick={props.cancel}
+            type="button"
+          >
+            Cancel
+          </button> }
+      </div>
     </form>
   )
 }

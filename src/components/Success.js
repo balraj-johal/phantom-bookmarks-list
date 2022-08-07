@@ -23,7 +23,11 @@ function Success() {
       <BookmarkLink
         link={{ url: decodeURIComponent(routeParams.linkID) }}
       />
-      <a href="/">&lt; back to overview</a>
+      <div className="return-link-wrapper">
+        <a className="return-link" href="/">
+          &lt; back to overview
+        </a>
+      </div>
     </main>
   )
 }

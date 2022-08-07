@@ -184,6 +184,7 @@ input {
   border: 0;
   border-radius: 1.5px;
   font-family: "Lekton", sans-serif;
+  padding: 2px 5px;
   min-width: 210px;
 }
 
@@ -203,6 +204,10 @@ button {
   padding: 0 15px;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .success {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -217,19 +222,34 @@ button {
 }
 
 .success .success-anim {
-  margin: 3em 0 4em;
-  width: 50vw;
-  height: 50vw;
+  margin: 5em 0 6em;
+  width: 30vw;
+  height: 30vw;
 }
 
 .success h1 {
   text-align: center;
 }
 
+.success .return-link-wrapper {
+  width: 100%;
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+.success .return-link-wrapper .return-link {
+  padding: 15px 15px 15px 0;
+  width: 89%;
+}
+
 @media (min-width: 900px) {
   .success .success-anim {
-    width: 30vw;
-    height: 30vw;
+    width: 20vw;
+    height: 20vw;
+  }
+  .success .return-link {
+    position: relative;
+    left: 0;
   }
 }
 
