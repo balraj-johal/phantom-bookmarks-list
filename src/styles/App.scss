@@ -1,4 +1,17 @@
 @import "base/fonts";
-@import "layout";
 @import "components/bookmark";
 @import "components/pageSwitcher";
+@import "components/addLinkForm";
+@import "components/input";
+@import "components/button";
+@import "pages/success";
+@import "pages/overview";
+@import "layout";
+
+a {
+  transition: color 100ms;
+  color: #89d4ff;
+  &:hover {
+    color: #619dc0;
+  }
+}

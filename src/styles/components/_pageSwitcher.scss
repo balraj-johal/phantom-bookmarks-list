@@ -3,4 +3,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  margin: 2em 0 1em;
+
+  .empty-link-spacer, a {
+    width: 30px;
+    margin: 0 10px;
+    text-align: center;
+  }
 }

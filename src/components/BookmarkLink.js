@@ -27,7 +27,7 @@ function ShowLink(props) {
   return(
     <>
       <a href={props.link.url}>{props.link.url}</a>
-      <div>
+      <div className="buttons">
         {props.deleteLink && <button 
           onClick={() => {
             props.deleteLink(props.link);

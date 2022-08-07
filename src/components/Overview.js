@@ -20,7 +20,7 @@ function Overview() {
   } = useSavedLinks(routeParams.pageNumber - 1 || 0, DEFAULT_PAGE_LENGTH);
 
   return(
-    <main data-testid="overview">
+    <main className="overview" data-testid="overview">
       <AddLinkForm addLink={addLink} />
       <PageSwitcher
         noPages={noPages}

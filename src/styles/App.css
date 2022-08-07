@@ -1,24 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap");
-body {
-  font-family: "Lekton", sans-serif;
-}
-
-header {
-  padding-left: 1.5em;
-}
-
-.container {
-  width: 100%;
-}
-
-@media (min-width: 900px) {
-  .container {
-    width: 70%;
-    margin: auto;
-    margin-bottom: 5em;
-  }
-}
-
 .bookmark-link {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -29,16 +9,41 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
-  height: 3em;
+  width: 87%;
+  height: 3.5em;
   margin: 0.5em 0;
   padding: 0.5em;
-  background-color: grey;
+  background-color: #363636;
   border-radius: 5px;
 }
 
 .bookmark-link.add-link {
   margin: 2.5em 0;
+}
+
+.bookmark-link a {
+  max-width: 216px;
+  overflow-wrap: break-word;
+}
+
+.bookmark-link .buttons {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (min-width: 900px) {
+  .bookmark-link {
+    width: 100%;
+  }
+  a {
+    max-width: 80% !important;
+    overflow-wrap: break-word;
+  }
 }
 
 .page-switcher {
@@ -52,5 +57,150 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 2em 0 1em;
+}
+
+.page-switcher .empty-link-spacer, .page-switcher a {
+  width: 30px;
+  margin: 0 10px;
+  text-align: center;
+}
+
+#add-link-form {
+  position: relative;
+}
+
+#add-link-form .url-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#add-link-form .url-section .error {
+  font-size: 0.9em;
+  color: red;
+  line-height: 1em;
+  margin-top: 10px;
+  margin-bottom: -4px;
+}
+
+@media (min-width: 900px) {
+  #add-link-form .url-section {
+    width: 50%;
+  }
+}
+
+input {
+  border: 0;
+  border-radius: 1.5px;
+  font-family: "Lekton", sans-serif;
+  min-width: 210px;
+}
+
+@media (min-width: 900px) {
+  input {
+    min-width: 50%;
+  }
+}
+
+button {
+  height: 80%;
+  border: 0;
+  border-radius: 3px;
+  font-family: "Lekton", sans-serif;
+  font-weight: bold;
+  margin: 0 0 0 10px;
+  padding: 0 15px;
+}
+
+.success {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.success .success-anim {
+  margin: 3em 0 4em;
+  width: 50vw;
+  height: 50vw;
+  background-color: aqua;
+}
+
+.success h1 {
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .success .success-anim {
+    width: 30vw;
+    height: 30vw;
+  }
+}
+
+.overview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body {
+  font-family: "Lekton", sans-serif;
+  background-color: black;
+  color: white;
+}
+
+.container {
+  width: 100%;
+}
+
+h1 {
+  font-size: 1.5em;
+  padding: 0 15px;
+}
+
+@media (min-width: 900px) {
+  h1 {
+    font-size: 2em;
+    padding: 0 15px;
+  }
+  header {
+    padding-left: 1.5em;
+  }
+  .container {
+    width: 70%;
+    margin: auto;
+    margin-bottom: 5em;
+  }
+}
+
+a {
+  -webkit-transition: color 100ms;
+  transition: color 100ms;
+  color: #89d4ff;
+}
+
+a:hover {
+  color: #619dc0;
 }
 /*# sourceMappingURL=App.css.map */

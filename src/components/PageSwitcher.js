@@ -18,13 +18,13 @@ function PageSwitcher(props) {
 }
 
 function PageNumberLink(props) {
-  if (!props.show) return null;
+  if (!props.show) return <span className="empty-link-spacer" />;
   return(
     <a 
       href={`/page/${props.toPageNo}`} 
       aria-label={`page ${props.toPageNo}`} 
     >
-      { props.left ? "< " : null }
+      { props.left ? "< " : "" }
       {props.toPageNo}
       { props.left ? null : " >" }
     </a>

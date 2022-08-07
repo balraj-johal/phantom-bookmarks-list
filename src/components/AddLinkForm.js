@@ -25,16 +25,23 @@ function AddLinkForm(props) {
       className="bookmark-link add-link" 
       onSubmit={onSubmit}
     >
-      <div>
+      <div className="url-section">
         <input
+          className="url-element"
           type="text"
           value={url}
           onChange={e => setURL(e.target.value)}
           required
+          placeholder="enter a valid url here"
+          error={error}
         />
-        <span aria-live="assertive">
+        { error !== "" && <span
+          className="url-element error" 
+          aria-live="assertive"
+        >
           {error}
-        </span>
+        </span> }
+        
       </div>
       <button type="submit">
         Save Link

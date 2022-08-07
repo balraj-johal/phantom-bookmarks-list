@@ -1,0 +1,23 @@
+#add-link-form {
+  position: relative;
+  .url-section {
+    .error {
+      font-size: 0.9em;
+      color: red;
+      line-height: 1em;
+      margin-top: 10px;
+      margin-bottom: -4px;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 900px) {
+  #add-link-form {
+    .url-section {
+      width: 50%;
+    }
+  }
+}
