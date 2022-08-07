@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 
+// https://lottiefiles.com/91001-success
 import successAnim from "../resources/animations/success.json";
 
 import BookmarkLink from "./BookmarkLink";

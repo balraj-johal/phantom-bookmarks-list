@@ -6,8 +6,8 @@ function LinkForm(props) {
 
   return(
     <form 
-      id="add-link-form" 
-      className="bookmark-link add-link" 
+      id="link-form" 
+      className="bookmark-link edit-link" 
       onSubmit={e => props.onSubmit(e, url)}
     >
       <div className="url-section">
@@ -28,11 +28,16 @@ function LinkForm(props) {
         
       </div>
       <div className="buttons">
-        <button type="submit" disabled={props.submitting}>
+        <button 
+          className="save"
+          type="submit" 
+          disabled={props.submitting}
+        >
           Save Link
         </button>
         { props.cancellable && 
           <button 
+            className="cancel"
             onClick={props.cancel}
             type="button"
           >

@@ -11,14 +11,14 @@ describe('crud tests', () => {
 
   it('allows adding link and returning to overview', () => {
     // add invalid link
-    cy.get('#add-link-form input').clear().type("https://www.yossdasdsautube.com");
-    cy.get('#add-link-form button').click();
+    cy.get('#link-form input').clear().type("https://www.yossdasdsautube.com");
+    cy.get('#link-form button').click();
     cy.wait(500);
     cy.contains(/success/i).should("not.exist");
 
     // add valid link
-    cy.get('#add-link-form input').clear().type("https://www.youtube.com");
-    cy.get('#add-link-form button').click();
+    cy.get('#link-form input').clear().type("https://www.youtube.com");
+    cy.get('#link-form button').click();
     cy.contains(/success/i).should("be.visible");
     cy.contains(/www.youtube.com/i).should("be.visible");
     cy.contains(/overview/i).click();
@@ -27,22 +27,22 @@ describe('crud tests', () => {
 
   it('disallows adding the same link twice', () => {
     // add link the first time
-    cy.get('#add-link-form input').type("https://www.youtube.com");
-    cy.get('#add-link-form button').click();
+    cy.get('#link-form input').type("https://www.youtube.com");
+    cy.get('#link-form button').click();
     cy.contains(/success/i).should("be.visible");
     cy.contains(/www.youtube.com/i).should("be.visible");
     cy.contains(/overview/i).click();
     cy.contains(/www.youtube.com/i).should("be.visible");
     // attempt to add second link
-    cy.get('#add-link-form input').type("https://www.youtube.com");
-    cy.get('#add-link-form button').click();
+    cy.get('#link-form input').type("https://www.youtube.com");
+    cy.get('#link-form button').click();
     cy.contains(/success/i).should("not.exist");
   })
 
   it('allows link edit', () => {
     // add link the first time
-    cy.get('#add-link-form input').clear().type("https://www.instagram.com");
-    cy.get('#add-link-form button').click();
+    cy.get('#link-form input').clear().type("https://www.instagram.com");
+    cy.get('#link-form button').click();
     cy.contains(/success/i).should("be.visible");
     cy.contains(/www.instagram.com/i).should("be.visible");
     cy.contains(/overview/i).click();
@@ -63,8 +63,8 @@ describe('crud tests', () => {
 
   it('allows link deletion', () => {
     // add link the first time
-    cy.get('#add-link-form input').clear().type("https://www.whatsapp.com");
-    cy.get('#add-link-form button').click();
+    cy.get('#link-form input').clear().type("https://www.whatsapp.com");
+    cy.get('#link-form button').click();
     cy.contains(/success/i).should("be.visible");
     cy.contains(/www.whatsapp.com/i).should("be.visible");
     cy.contains(/overview/i).click();
@@ -82,8 +82,8 @@ describe('pagination tests', () => {
     // add test links
     cy.wrap(links.data).each((link) => {
       // add valid link
-      cy.get('#add-link-form input').clear().type(link.url);
-      cy.get('#add-link-form button').click();
+      cy.get('#link-form input').clear().type(link.url);
+      cy.get('#link-form button').click();
       cy.contains(/success/i).should("be.visible");
       cy.contains(link.url).should("be.visible");
       cy.contains(/overview/i).click();

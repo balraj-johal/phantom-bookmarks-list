@@ -92,7 +92,7 @@ input.error {
   border-radius: 5px;
 }
 
-.bookmark-link.add-link {
+.bookmark-link.edit-link {
   margin: 2.5em 0;
 }
 
@@ -114,6 +114,15 @@ input.error {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.bookmark-link .buttons button.delete {
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
+}
+
+.bookmark-link .buttons button.delete:hover {
+  background-color: #921c1c;
 }
 
 @media (min-width: 900px) {
@@ -145,15 +154,25 @@ input.error {
   text-align: center;
 }
 
-#add-link-form {
+.bg-canvas {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#link-form {
   position: relative;
 }
 
-#add-link-form input.error {
+#link-form input.error {
   outline: 1.5px solid red;
 }
 
-#add-link-form .url-section {
+#link-form .url-section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -166,7 +185,7 @@ input.error {
           justify-content: center;
 }
 
-#add-link-form .url-section span.error {
+#link-form .url-section span.error {
   font-size: 0.9em;
   color: red;
   line-height: 1em;
@@ -174,8 +193,26 @@ input.error {
   margin-bottom: -4px;
 }
 
+#link-form button.cancel:hover {
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
+  background-color: #921c1c;
+  color: white;
+}
+
+#link-form button.save {
+  padding: 0 30px;
+}
+
+#link-form button.save:hover {
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
+  background-color: #00a2ff;
+  color: white;
+}
+
 @media (min-width: 900px) {
-  #add-link-form .url-section {
+  #link-form .url-section {
     width: 50%;
   }
 }
@@ -201,11 +238,26 @@ button {
   font-family: "Lekton", sans-serif;
   font-weight: bold;
   margin: 0 0 0 10px;
-  padding: 0 15px;
+  padding: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 button:hover {
   cursor: pointer;
+}
+
+button img {
+  margin-top: -3px;
+  width: 25px;
+  height: 25px;
 }
 
 .success {

@@ -1,4 +1,8 @@
 import { useState } from "react";
+
+import editImg from "../resources/icons/edit.png";
+import deleteImg from "../resources/icons/delete.png";
+
 import LinkForm from "./LinkForm";
 
 function BookmarkLink(props) {
@@ -53,19 +57,17 @@ function LinkDisplay(props) {
       <div className="buttons">
         { props.deleteLink && 
           <button 
-            onClick={() => {
-              props.deleteLink(props.link);
-            }}
+            onClick={() => { props.deleteLink(props.link); }}
             className="delete"
           >
-            delete
+            <img src={deleteImg} alt="delete icon" />
           </button> }
         { props.deleteLink && 
           <button 
             onClick={() => { props.setLinkState("Edit"); }}
             className="edit"
           >
-            edit
+            <img src={editImg} alt="edit icon" />
           </button> }
       </div>
     </li>

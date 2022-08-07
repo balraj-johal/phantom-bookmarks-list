@@ -1,4 +1,4 @@
-#add-link-form {
+#link-form {
   position: relative;
 
   input.error {
@@ -16,10 +16,26 @@
     flex-direction: column;
     justify-content: center;
   }
+
+  button.cancel {
+    &:hover {
+      transition: all 150ms;
+      background-color: rgb(146, 28, 28);
+      color: white;
+    }
+  }
+  button.save {
+    padding: 0 30px;
+    &:hover {
+      transition: all 150ms;
+      background-color: #00a2ff;
+      color: white;
+    }
+  }
 }
 
 @media (min-width: 900px) {
-  #add-link-form {
+  #link-form {
     .url-section {
       width: 50%;
     }
